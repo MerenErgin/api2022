@@ -15,7 +15,7 @@ public class Get01 {
                     - 'Gherkin' bazi keywordlere sahip, bunlar:
                         -Given: On kosullar
                         -When: Aksiyonlar --> Get, Put, ...
-                        -Then: Donutler --> Dogrulama, response, ...
+                        -Then: Donutler --> Assert ...
                         -And: Coklu islemeler icin kullanilirlar.
 
             3- Test kodlarinin yazimi
@@ -43,6 +43,7 @@ public class Get01 {
         String url= "https://restful-booker.herokuapp.com/booking/151";
 
         //- Set the expected data(POST-PUT-PATCH)
+        //(Bu gorevde sadece get kullandigimiz icin bu adimi atliyoruz)
 
         //- Type code to send request
         Response response = given().when().get(url);
@@ -65,8 +66,15 @@ public class Get01 {
         System.out.println(response.header("Connection"));
         System.out.println(response.header("Host"));
         System.out.println(response.header("User-Agent"));
-        
-        System.out.println(response.headers());
+
+        System.out.println("---------------------");
+
+        System.out.println("Headers:\n"+response.headers());
+
+        System.out.println("---------------------");
+
+        //'Time' nasil yazdirilir:
+        System.out.println(response.getTime());
 
     }
 
