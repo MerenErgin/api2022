@@ -27,7 +27,7 @@ public class Get01 {
 
     /*
         Given
-            https://restful-booker.herokuapp.com/booking/3
+            https://restful-booker.herokuapp.com/booking/151
         When
             User sends a GET Request to the url
         Then
