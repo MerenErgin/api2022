@@ -36,6 +36,8 @@ public class Get03 extends  BaseUrls{
         //3. Step: Set the Request and get the Response
         Response response= given().spec(spec).when().get("/{first}/{second}");
 
+        response.prettyPrint();
+
         //4.Step: Do Assertion
         //1.yol:
         response.then()
