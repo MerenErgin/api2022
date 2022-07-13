@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.testng.asserts.SoftAssert;
 
 import static io.restassured.RestAssured.*;
 import static junit.framework.TestCase.assertEquals;
@@ -69,6 +70,23 @@ public class Get06 extends HerokuappBaseUrl {
         assertEquals(true,json.getBoolean("depositpaid"));
         assertEquals("2022-07-13",json.getString("bookingdates.checkin"));
         assertEquals("2022-07-26",json.getString("bookingdates.checkout"));
+
+        //3.yol: Soft Assertion
+        // Soft Assertion icin 3 adim izlenir
+
+        //1) SoftAssert objesi olusturulur
+        SoftAssert softAssert = new SoftAssert();
+
+        //2) Obje araciligi ile assert yapilir
+        softAssert.assertEquals(json.getString("firstname"),"Itzel","firstname uyusmadi");//mesaj assertion false olursa calisir
+        softAssert.assertEquals(json.getString("lastname"),"Villanueva","lastname uyusmadi");
+        softAssert.assertEquals(json.getInt("totalprice"),593,"totalprice uyusmadi");
+        softAssert.assertEquals(json.getBoolean("depositpaid"),true,"depositpaid uyusmadi");
+        softAssert.assertEquals(json.getString("bookingdates.checkin"),"2022-07-13","checkin uyusmadi");
+        softAssert.assertEquals(json.getString("bookingdates.checkout"),"2022-07-26","checkout uyusmadi");
+
+        //3) assertAll() methodu kullanilir. Aksi takdirde kod her zaman pass olur
+        softAssert.assertAll();
 
     }
 
