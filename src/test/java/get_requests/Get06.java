@@ -45,7 +45,7 @@ public class Get06 extends HerokuappBaseUrl {
 
         //3. Step: Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
-        //response.prettyPrint();
+        response.prettyPrint();
 
         //4. Step: Do Assertion
         //1.yol:
