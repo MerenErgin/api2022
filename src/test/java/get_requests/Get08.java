@@ -62,6 +62,12 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
 
         //4. Step: Do Assortion
         assertEquals(expectedData.get("userId"),actualData.get("userId"));
+        assertEquals(expectedData.get("title"),actualData.get("title"));
+        assertEquals(expectedData.get("completed"),actualData.get("completed"));
+
+        assertEquals(expectedData.get("Status code"),response.getStatusCode());
+        assertEquals(expectedData.get("Via"),response.getHeader("Via"));
+        assertEquals(expectedData.get("Server"),response.getHeader("Server"));
 
 
     }
