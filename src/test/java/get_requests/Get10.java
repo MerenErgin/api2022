@@ -51,6 +51,8 @@ public class Get10 extends GoRestBaseUrl {
         Map<String, Object> actualDataMap = response.as(HashMap.class); //De-Serialization==> Json formatindan java objesine cevirdik
 
         //4. Step: Do Assertion
+        response.then().assertThat().statusCode(200);
+
         assertEquals(expectedData.get("meta"), actualDataMap.get("meta"));
         assertEquals(dataKeyMap.get("name"),((Map)actualDataMap.get("data")).get("name")); //Once "data" elementine ulasipp buradan aldigim objeyi Map formatina cast ediyoruz
         assertEquals(dataKeyMap.get("email"),((Map)actualDataMap.get("data")).get("email"));

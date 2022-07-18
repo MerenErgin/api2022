@@ -3,7 +3,7 @@ package get_requests;
 import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
-import test_data.jsonPlaceHolderTestData;
+import test_data.JsonPlaceHolderTestData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +63,8 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         Map<String, Object> actualData= response.as(HashMap.class);
 
         //4. Step: Do Assortion
+        response.then().assertThat().statusCode(200);
+
         assertEquals(expectedData.get("userId"),actualData.get("userId"));
         assertEquals(expectedData.get("title"),actualData.get("title"));
         assertEquals(expectedData.get("completed"),actualData.get("completed"));
@@ -79,7 +81,7 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first","todos","second",2);
 
         //2. Step: Set the expected data
-        jsonPlaceHolderTestData expectedData = new jsonPlaceHolderTestData();
+        JsonPlaceHolderTestData expectedData = new JsonPlaceHolderTestData();
 
         Map<String, Object> expectedDataMap = expectedData.expectedDataWithAllKeys(1,"quis ut nam facilis et officia qui",false);
 
@@ -94,6 +96,8 @@ public class Get08 extends JsonPlaceHolderBaseUrl {
         System.out.println(actualData);
 
         //4. Step: Do Assortion
+        response.then().assertThat().statusCode(200);
+
         assertEquals(expectedDataMap.get("userId"),actualData.get("userId"));
         assertEquals(expectedDataMap.get("title"),actualData.get("title"));
         assertEquals(expectedDataMap.get("completed"),actualData.get("completed"));
