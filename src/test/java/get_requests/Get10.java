@@ -39,8 +39,8 @@ public class Get10 extends GoRestBaseUrl {
         spec.pathParams("first","users","second",2526);
 
         //2. Step: Set the expected data
-                    //id 'yi sistem belirledigi icin secmemize gerek yok
         GoRestTestData dataKey= new GoRestTestData();
+                    //id 'yi sistem belirledigi icin secmemize gerek yok
         Map<String, String> dataKeyMap = dataKey.dataHeyMap("Mrs. Goswamee Gandhi","mrs_goswamee_gandhi@little.org","female","inactive");
 
         Map<String, Object> expectedData = dataKey.expectedDataMap(null,dataKeyMap);
@@ -48,11 +48,11 @@ public class Get10 extends GoRestBaseUrl {
 
         //3.Step: Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
-        Map<String, Object> actualDataMap = response.as(HashMap.class);
+        Map<String, Object> actualDataMap = response.as(HashMap.class); //De-Serialization==> Json formatindan java objesine cevirdik
 
         //4. Step: Do Assertion
         assertEquals(expectedData.get("meta"), actualDataMap.get("meta"));
-        assertEquals(dataKeyMap.get("name"),((Map)actualDataMap.get("data")).get("name"));
+        assertEquals(dataKeyMap.get("name"),((Map)actualDataMap.get("data")).get("name")); //Once "data" elementine ulasipp buradan aldigim objeyi Map formatina cast ediyoruz
         assertEquals(dataKeyMap.get("email"),((Map)actualDataMap.get("data")).get("email"));
         assertEquals(dataKeyMap.get("gender"),((Map)actualDataMap.get("data")).get("gender"));
         assertEquals(dataKeyMap.get("status"),((Map)actualDataMap.get("data")).get("status"));
