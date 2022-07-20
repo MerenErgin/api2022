@@ -10,7 +10,7 @@ public class JsonPlaceHolderPojo {
     /*
     1) Tum keyler icin private veriable'lar olusturulr
     2) Tum parametrelerle ve parametresiz constructor'lar olusturulur
-    3) Detters ve setters'lar olusturulur
+    3) Getters ve Setters'lar olusturulur
     4) toString methodu olusturulur
      */
 
@@ -30,7 +30,7 @@ public class JsonPlaceHolderPojo {
     public JsonPlaceHolderPojo() {
     }
 
-    //3) Detters ve setters'lar olusturulur
+    //3) Getters ve Setters'lar olusturulur
     public Integer getUserId() {
         return userId;
     }
