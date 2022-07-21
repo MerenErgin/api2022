@@ -14,7 +14,7 @@ public class JsonUtil {
 
     //1.Method: Json Datasini Java Objesine cevirir.(De-Serialization)
 
-    public static <T> T convertJsonToJava(String json, Class<T> cls){//Generic Method(Her data tipi ile calisabilen)
+    public static <T> T convertJsonToJavaObject(String json, Class<T> cls){//Generic Method(Her data tipi ile calisabilen)
         T javaResult = null;
 
         try {
