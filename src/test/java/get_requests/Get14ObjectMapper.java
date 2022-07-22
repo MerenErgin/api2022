@@ -3,6 +3,7 @@ package get_requests;
 import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import pojos.JsonPlaceHolderPojo;
 import utils.JsonUtil;
 
 import java.util.HashMap;
@@ -52,6 +53,34 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         assertEquals(expectedDataMap.get("id"),actaulDataMap.get("id"));
         assertEquals(expectedDataMap.get("title"),actaulDataMap.get("title"));
         assertEquals(expectedDataMap.get("completed"),actaulDataMap.get("completed"));
+
+    }
+
+    @Test
+    public void get02ObjectMapper(){//Tercih edilen Pojo
+        //1.Step: Set the url
+        spec.pathParams("first","todos","second",198);
+
+        //2.Step: Set the expected Data
+        String expectedData = "{\n" +
+                "    \"userId\": 10,\n" +
+                "    \"id\": 198,\n" +
+                "    \"title\": \"quis eius est sint explicabo\",\n" +
+                "    \"completed\": true\n" +
+                "  }";
+
+        JsonPlaceHolderPojo expectedDataPojo = JsonUtil.convertJsonToJavaObject(expectedData, JsonPlaceHolderPojo.class);
+
+        //3.Step: Send the Get Request and get the response
+        Response response = given().spec(spec).when().get("/{first}/{second}");
+
+        //4.Step: Do Assertion
+        JsonPlaceHolderPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.asString(),JsonPlaceHolderPojo.class);
+
+        assertEquals(200,response.getStatusCode());
+        assertEquals(expectedDataPojo.getUserId(),actualDataPojo.getUserId());
+        assertEquals(expectedDataPojo.getTitle(),actualDataPojo.getTitle());
+        assertEquals(expectedDataPojo.getCompleted(),actualDataPojo.getCompleted());
 
     }
 
