@@ -3,6 +3,7 @@ package get_requests;
 import base_urls.HerokuappBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.testng.asserts.SoftAssert;
 import pojos.BookingPojo;
 import utils.JsonUtil;
 
@@ -57,6 +58,7 @@ public class Get15ObjectMapper extends HerokuappBaseUrl {
         //4.Step: Do Assertion
         BookingPojo actualDataPojo = JsonUtil.convertJsonToJavaObject(response.asString(),BookingPojo.class);
 
+        //Hard Assertion
         assertEquals(200,response.getStatusCode());
         assertEquals(expectedDataPojo.getFirstname(),actualDataPojo.getFirstname());
         assertEquals(expectedDataPojo.getLastname(),actualDataPojo.getLastname());
@@ -66,6 +68,25 @@ public class Get15ObjectMapper extends HerokuappBaseUrl {
         assertEquals(expectedDataPojo.getBookingdates().getCheckin(),actualDataPojo.getBookingdates().getCheckin());
         assertEquals(expectedDataPojo.getBookingdates().getCheckout(),actualDataPojo.getBookingdates().getCheckout());
 
+        //Soft Assertion
+        //1.Adim: SoftAssert objesi olustur
+        SoftAssert softAssert = new SoftAssert();
+
+        //2.Adim: Assertion yap
+        softAssert.assertEquals(actualDataPojo.getFirstname(),expectedDataPojo.getFirstname(),"Firstname uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getLastname(),expectedDataPojo.getLastname(),"Lastname uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getTotalprice(),expectedDataPojo.getTotalprice(),"Totalprice uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getDepositpaid(),expectedDataPojo.getDepositpaid(),"Depositpaid uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getAdditionalneeds(),expectedDataPojo.getAdditionalneeds(),"Additionalneeds uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getBookingdates().getCheckin(),expectedDataPojo.getBookingdates().getCheckin(),"Checkin uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getBookingdates().getCheckout(),expectedDataPojo.getBookingdates().getCheckout(),"Checkout uyusmadi");
+
+        //3.Adim: assertAll() methodu calistir
+        softAssert.assertAll();
+
+        // Hard Assertion ve Soft assertion arasindaki fark;
+        // Soft Asserion da hata oldugu zaman devam eder ve kac tanesinde hata varsa gosterir
+        // Hard assertionda ilk hatada kod calismayi durdurur ve sadece o hatayi goruruz
 
     }
 
