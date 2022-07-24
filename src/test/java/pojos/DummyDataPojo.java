@@ -8,95 +8,69 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DummyDataPojo {
+/*
+        "id": 1,
+        "employee_name": "Tiger Nixon",
+        "employee_salary": 320800,
+        "employee_age": 61,
+        "profile_image": ""
+ */
+    private String employee_name;
+    private Integer employee_salary;
+    private Integer employee_age;
+    private String profile_image;
 
-    private Integer id;
-    private String employeeName;
-    private Integer employeeSalary;
-    private Integer employeeAge;
-    private String profileImage;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
+
+    public DummyDataPojo(String employee_name, Integer employee_salary, Integer employee_age, String profile_image) {
+        this.employee_name = employee_name;
+        this.employee_salary = employee_salary;
+        this.employee_age = employee_age;
+        this.profile_image = profile_image;
+    }
+
     public DummyDataPojo() {
     }
 
-    /**
-     *
-     * @param employeeName
-     * @param employeeAge
-     * @param id
-     * @param profileImage
-     * @param employeeSalary
-     */
-    public DummyDataPojo(Integer id, String employeeName, Integer employeeSalary, Integer employeeAge, String profileImage) {
-        super();
-        this.id = id;
-        this.employeeName = employeeName;
-        this.employeeSalary = employeeSalary;
-        this.employeeAge = employeeAge;
-        this.profileImage = profileImage;
+    public String getEmployee_name() {
+        return employee_name;
     }
 
-    public Integer getId() {
-        return id;
+    public void setEmployee_name(String employee_name) {
+        this.employee_name = employee_name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getEmployee_salary() {
+        return employee_salary;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    public void setEmployee_salary(Integer employee_salary) {
+        this.employee_salary = employee_salary;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public Integer getEmployee_age() {
+        return employee_age;
     }
 
-    public Integer getEmployeeSalary() {
-        return employeeSalary;
+    public void setEmployee_age(Integer employee_age) {
+        this.employee_age = employee_age;
     }
 
-    public void setEmployeeSalary(Integer employeeSalary) {
-        this.employeeSalary = employeeSalary;
+    public String getProfile_image() {
+        return profile_image;
     }
 
-    public Integer getEmployeeAge() {
-        return employeeAge;
-    }
-
-    public void setEmployeeAge(Integer employeeAge) {
-        this.employeeAge = employeeAge;
-    }
-
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    public void setProfile_image(String profile_image) {
+        this.profile_image = profile_image;
     }
 
     @Override
     public String toString() {
         return "DummyDataPojo{" +
-                "id=" + id +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeSalary=" + employeeSalary +
-                ", employeeAge=" + employeeAge +
-                ", profileImage='" + profileImage + '\'' +
-                ", additionalProperties=" + additionalProperties +
+                "employee_name='" + employee_name + '\'' +
+                ", employee_salary=" + employee_salary +
+                ", employee_age=" + employee_age +
+                ", profile_image='" + profile_image + '\'' +
                 '}';
     }
 }
