@@ -4,6 +4,7 @@ import base_urls.JsonPlaceHolderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
 import pojos.JsonPlaceHolderPojo;
+import test_data.JsonPlaceHolderTestData;
 import utils.JsonUtil;
 
 import java.util.HashMap;
@@ -33,12 +34,19 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first","todos","second",198);
 
         //2.Step: Set the expected Data
+        /*
+        JsonPlaceHolderTestData jsonPlaceHolderTestData = new JsonPlaceHolderTestData();
+        String expectedData= jsonPlaceHolderTestData.expectedDataInString(10,"quis eius est sint explicabo",true);
+         */
+
         String expectedData = "{\n" +
                 "    \"userId\": 10,\n" +
                 "    \"id\": 198,\n" +
                 "    \"title\": \"quis eius est sint explicabo\",\n" +
                 "    \"completed\": true\n" +
                 "  }";
+
+
 
         HashMap<String, Object> expectedDataMap = JsonUtil.convertJsonToJavaObject(expectedData, HashMap.class);
 
@@ -62,6 +70,12 @@ public class Get14ObjectMapper extends JsonPlaceHolderBaseUrl {
         spec.pathParams("first","todos","second",198);
 
         //2.Step: Set the expected Data
+        /*
+        JsonPlaceHolderTestData jsonPlaceHolderTestData = new JsonPlaceHolderTestData();
+        String expectedData= jsonPlaceHolderTestData.expectedDataInString(10,"quis eius est sint explicabo",true);
+
+         */
+
         String expectedData = "{\n" +
                 "    \"userId\": 10,\n" +
                 "    \"id\": 198,\n" +

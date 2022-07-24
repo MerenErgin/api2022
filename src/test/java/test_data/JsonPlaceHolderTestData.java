@@ -37,7 +37,7 @@ public class JsonPlaceHolderTestData {
         }
      */
 
-    public String expectedDataInString(Integer userId, String title, Boolean completed){
+    public String expectedDataInString(int userId, String title, boolean completed){
 
         String expectedData = "{\n" +
                 "    \"userId\": "+ userId+",\n" +
